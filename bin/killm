@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+# filename: killm
+# Mike Hamilton
+# MPL/SIO   date: 1999-06-01
+# Description:
+#   Kill the ^M in a file
+
+#-----Get filename-----
+$file       = $ARGV[0];
+(-e $file) or die("File not found: $file");
+
+#-----file io-----
+$tempfile = "temp.dat";
+open OUTPUT, ">" . $tempfile;
+open INPUT, "<" . $file or
+    die "file $file doesn't exist\n";
+
+#-----Replace ^M (x0D) line by line-----
+while (<INPUT>) {
+    s/\x0D//g;
+    print OUTPUT ;
+}
+close OUTPUT;
+
+#-----Copy temp to orig filename-----
+`mv -f temp.dat $file`;
+exit;
+

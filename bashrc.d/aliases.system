@@ -1,0 +1,35 @@
+# FILE:        aliases.system
+#
+# DESCRIPTION: General system aliases universal to most platforms
+#              
+
+alias a alias
+
+# Directory Navigation aliases
+alias gt 'set d2=$cwd ; cd \!* ; set d1=$cwd; pwd '
+alias gb 'cd $d2 ; set d2=$d1; set d1=$cwd; pwd '
+alias drs 'echo `ls -1 -F | egrep /`'
+
+# Alias sd to reset $*DISPLAY
+alias sd 'setenv RMT_DISPLAY \!^; setenv DISPLAY {\!^}:0.0; eg DISPLAY'
+
+# Aliases to find text in alias, environmental variable, or shell variable:
+alias ag    'echo "alias | egrep" \!*; alias | egrep \!*'
+alias eg    'echo "env | egrep" \!*; env | egrep \!*'
+alias @g    'echo "@ | egrep " \!*; @ | egrep \!^'
+
+# "pkill <process>" kills the specified running process.
+# "zap <process>" does the same thing under solaris.
+# If the process is not running, pkill reports that (and nothing else).
+if ($OSTYPE == solaris) then 
+   a pkillSet 'set pro = `$ps_cmd_s | egrep \!^ | egrep -v egrep | head -1`'
+else
+   a pkillSet 'set pro = `eval "$ps_cmd_s" | egrep \!^ | egrep -v egrep | head -1`'
+endif
+# Both Solaris and Linux:
+a pkill '       pkillSet \!^; \\
+       if (! $#pro) echo "pkill: \!^ is not running"; \\
+       if (! $#pro) set pro = ''; \\
+       if ("$pro" != '') echo kill -9 $pro[1] (\!^); \\
+       if ("$pro" != '') kill -9 $pro[1]; unset pro'
+

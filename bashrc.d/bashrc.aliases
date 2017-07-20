@@ -1,0 +1,14 @@
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ls='ls --color=auto'
+alias ll='ls -lF'
+alias la='ls -A'
+alias l='ls -CF'
+alias back='cd $OLDPWD'
+alias h='history'
+alias emacs='emacs -bg darkslategrey -fg white -cr white'
+alias rm="rm -i"
+alias rmbak='rm *~ *% *# .*~ .*% .*#'
+alias more=less

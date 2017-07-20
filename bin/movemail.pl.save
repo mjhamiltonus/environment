@@ -1,0 +1,100 @@
+#!/usr/bin/perl
+
+# Convert netscape mail to Evolution mail.
+
+$netscapeDir = "/home/mikeh/netm";
+# $evolutionDir = "/home/mikeh/evolution/local";
+$evolutionDir = "/home/mikeh/bin/temp";
+$verbose = 1;
+
+
+# Create all the subdirectory tree
+opendir NETDIR, $netscapeDir
+    or die "Couldn't open $netscapeDir for Mozilla";
+opendir EVODIR, $evolutionDir
+    or die "Couldn't open $evolutionDir for Evolution";
+
+@subdirs = grep /\.sbd$/, readdir NETDIR;
+
+if($verbose) {print "subdirs:\n";print @subdirs;print "\n";}
+
+foreach $dir (@subdirs) {
+    $_ = $dir;
+    /(.*).sbd/;
+    $name = $1;
+
+    print;
+    print "\n";
+    print "$name\n";
+
+    # Make new subdirectory in outlook
+    $newEvoDir = $evolutionDir . "/$name";
+    mkdir $newEvoDir;
+
+    # Traverse tree and get additional subdirectories
+    populateDir( $netscapeDir . $_, $newEvoDir );
+
+}
+
+close NETDIR;
+close EVODIR;
+
+
+# Go down into the tree and create the directory structure for Evolution
+sub populateDir {
+    my $recNetDir = shift;
+    my $recEvoDir = shift;
+    my NETDIR;
+    my @subdirs, $subdir, $name;
+
+    # open the new directory in the tree
+    opendir NETDIR, $recNetDir
+	or die "Couldn't open $dirname in Mozilla area";
+
+    # Find the list of subdirectories, and create the "subfolders" dir in Evolution
+    @subdirs = grep /\.sbd$/, readdir NETDIR;
+    if( $#subdirs > 0 ) {
+	mkdir $recEvoDir . "/subfolders";
+    }
+
+    # Create the Folders in Evolution, populate the mbox files
+    foreach $subdir (@subdirs) {
+	$_ = $subdir;
+	/(.*).sbd/;
+	$name = $1;
+
+	print;
+	print "\n";
+	print "$name\n";
+	
+	# Make new subdirectory in outlook
+	$newRecEvoDir = $recEvoDir . "/subfolders/$name";
+	mkdir $newRecEvoDir;
+	
+	# Traverse tree and get additional subdirectories
+	populateDir( $recNetDir . $_, $newRecEvoDir );
+    }
+
+    # Populate the data files
+    rewinddir NETDIR;
+    # Get the .msf names
+    @mailboxes = grep /\.msf$/, readdir NETDIR;
+    
+    foreach $mailbox (@mailboxes) {
+	$_ = $mailbox;
+	/(.*).msf/;
+	$name = $1;
+
+	# make the Evolution directory
+	mkdir $recEvoDir . "/$name";
+	# copy the data to the Evolution mbox file 
+	$netscapeMail = "$recNetDir/$name";
+	$evoMail = "$recEvoDir/mbox";
+	"cp $netscapeMail $evoMail";
+    }
+
+}
+
+
+
+

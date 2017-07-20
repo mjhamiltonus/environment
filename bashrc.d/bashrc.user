@@ -1,0 +1,36 @@
+# FILE:        .bashrc.user
+#
+# DESCRIPTION: User customized bash shell startup information.  
+#              Further user customization should go here.
+#
+
+#---User defined stuff below here---
+
+# If not running interactively, don't do anything
+# [ -z "$PS1" ] && return
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+#---Add perl scripts/executables---
+# export PATH=`echo ${PATH} | awk -v RS=: -v ORS=: '/./ {next} {print}'`
+export PATH=${PATH}:~${USER}/bin:.
+export EDITOR=emacs
+
+# Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
+# If this is an xterm set the title to user@host:dir
+
+# MJH: slim down the command line prompt.  Path in top bar.
+PS1='${debian_chroot:+($debian_chroot)}\u@\h\$ '
+case "$TERM" in
+xterm*|rxvt*)
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'
+    ;;
+*)
+    ;;
+esac
+

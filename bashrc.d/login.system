@@ -1,0 +1,20 @@
+# .login.system
+#
+# DO NOT MODIFY THIS FILE FOR USER CUSTOMIZATION
+# Users should add information in the .login.user file, which is 
+# sourced by the .login.system file.
+
+set nobeep
+
+# FILE:        .cshrc.system
+#
+# DESCRIPTION: csh/tcsh startup information for default system.
+#
+#              DO NOT MODIFY THIS FILE FOR USER CUSTOMIZATION
+#              Users should add information in the .cshrc.user file,
+#              which is sourced by the .cshrc.system file.
+
+#-----------------------------------------------------------
+#--- Software Specific Setups-------------------------------
+#-----------------------------------------------------------
+# all this moved to cshrc.system

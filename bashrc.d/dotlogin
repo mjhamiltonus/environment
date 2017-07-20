@@ -1,0 +1,12 @@
+# .login
+# 
+# Source the system .login file.
+# DO NOT MODIFY THIS FILE FOR USER CUSTOMIZATION
+# Users should add information in the .login.user file, which is 
+# sourced by the .login.system file.
+
+
+source ~/cshrc/login.system
+if( -e ~/cshrc/login.user ) source ~/cshrc/login.user
+
+  

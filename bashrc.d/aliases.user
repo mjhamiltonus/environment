@@ -1,0 +1,35 @@
+# FILE:        aliases.system
+#
+# DESCRIPTION: General system aliases universal to most platforms
+#              
+
+#---MJH's personal aliases---
+alias	a	'alias'
+alias	cl	clear
+alias 	lld	'ls -ld $1'
+alias	lm	'ls -l |more'
+alias	ll	'ls -l --color'
+alias	llsys	'ls -la .c* .l* .a*'
+alias	la	'ls -la'
+alias	dir 	ll  
+alias	cll	'clear; ll'
+alias	h	history 100
+alias	rm	'rm -i'
+alias	rmbak	'rm *~ *% *# .*~ .*% .*#'
+alias 	psme    'ps -efc | grep hamilton' 
+alias	psw     'ps -efc | grep $1'
+alias	xpine	'xterm -fg cornsilk2 -bg black -T pine -n pine -e pine &'
+# alias	emacs 	'emacs -fg white -bg black'
+alias	emacs 	'emacs -bg darkslategrey -fg white -cr white'
+alias	more	less
+alias	setwin	'echo "]1;`hostname`";echo "]2;`hostname`"'
+alias 	en2 	'enscript -L66 -G -2r -Pbw4000 $cwd/\!*'
+alias	enl     'enscript -G -r -Pbw4000 $cwd/\!*'
+alias	drs	'ls -F | grep /'
+
+alias	mp2 	'mpage -2 -m65t -H -PCASW-topfloor \!*'
+alias	mp4 	'mpage -4 -m65t -H -PCASW-topfloor \!*'
+
+alias ssh 'ssh -X'
+
+

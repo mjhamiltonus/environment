@@ -1,0 +1,157 @@
+;---Add path for major mode code---
+(setq load-path (append load-path '("~hamiltonmj/emacs")))
+
+;---Font setting---
+(set-face-attribute 'default nil :height 150)
+
+;---Color editing on---
+(global-font-lock-mode t)
+(setq font-lock-maximum-decoration t)
+
+;---Goto-line keyboard command---
+(global-set-key "\M-g" 'goto-line)
+
+;---Goto-line keyboard command---
+(mouse-wheel-mode t)
+
+;--- count-words function----
+(defun count-words (&optional begin end)
+  "count words between BEGIN and END (region); if no region defined, count words in buffer"
+  (interactive "r")
+  (let ((b (if mark-active begin (point-min)))
+      (e (if mark-active end (point-max))))
+    (message "Word count: %s" (how-many "\\w+" b e))))
+
+;---Matlab mode initialization---
+(autoload 'matlab-mode "matlab.el" "Matlab Mode" t)
+(setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist))
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(setq minibuffer-max-depth nil)
+
+;---Indent tab mode to nil---
+(setq-default indent-tabs-mode nil)
+(setq indent-tabs-mode nil)
+
+;---Indentation in JDE-mode set to 3---
+(defun my-jde-mode-hook ()
+  (setq c-basic-offset 3))
+
+(add-hook 'jde-mode-hook 'my-jde-mode-hook)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(ediff-prefer-iconified-control-frame t)
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-use-toolbar-p t)
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(inhibit-startup-screen t)
+ '(query-user-mail-address nil)
+ '(user-mail-address "hamilton@nurc.nato.int"))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+
+;-----LATEX-----
+(setq tex-dvi-view-command "xdvi")
+
+;-----C/C++ MODE MODIFICATIONS-----
+;---Indentation in c and c++ mode set to 3---
+(defun my-c-indent-setup ()
+  (setq tab-width 2)
+  (setq c-basic-offset 2)
+  (setq indent-tabs-mode nil))
+(defun my-c++-indent-setup ()
+  (setq tab-width 2)
+  (setq c-basic-offset 2)
+  (setq indent-tabs-mode nil))
+(add-hook 'c-mode-hook 'my-c-indent-setup)
+(add-hook 'c++-mode-hook 'my-c++-indent-setup)
+;---Use BSD style indents ({ flush w/ if/for)---
+(setq c-default-style
+      '((java-mode . "java") (other . "bsd")))
+;---I want to do C++ for .h files - MJH 10/8/2003---
+(setq auto-mode-alist
+  (append
+   ;; File name ends in '.h'.
+   '(("\\.h\\'" . c++-mode))
+  auto-mode-alist))
+(setq auto-mode-alist
+  (append
+   ;; File name ends in '.h'.
+   '(("\\.moos\\'" . c++-mode))
+  auto-mode-alist))
+;---I want font lock mode on for C code - MJH 10/21/2003---
+(add-hook 'c-mode-hook 'turn-on-font-lock)
+(add-hook 'c++-mode-hook 'turn-on-font-lock)
+
+;---PYTHON MODE---
+(setq auto-mode-alist
+      (cons '("\\.py$" . python-mode) auto-mode-alist))
+(setq interpreter-mode-alist
+      (cons '("python" . python-mode)
+            interpreter-mode-alist))
+(autoload 'python-mode "python-mode" "Python editing mode." t)
+
+;---BZR INTERFACE: VCS---
+(unless (memq 'Bzr vc-handled-backends)
+  (add-to-list 'vc-handled-backends 'Bzr))
+;---BZR INTERFACE---
+;; (require 'bazaar)
+;; (add-hook 'find-file-hooks 'bzr-maybe-activate)
+
+;---SVN INTERFACE---
+(require 'psvn)
+(autoload 'svn-status "dsvn" "Run `svn status'." t)
+(autoload 'svn-update "dsvn" "Run `svn update'." t)
+
+;---GIT INTERFACE---
+(require 'git)
+
+;---HTML HELPER MODE---
+(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+(setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
+(setq html-helper-build-new-buffer t)
+(setq html-helper-do-write-file-hooks t)
+(add-hook 'html-helper-load-hook '(lambda () (require 'html-font)))
+(add-hook 'html-helper-mode-hook '(lambda () (font-lock-mode 1)))
+(setq html-helper-address-string 
+  "<a href=\"mailto:hamiltonmj@leidos.com\">hamiltonmj@leidos.com</a>")
+
+;---CMAKE MODE---
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+                ("\\.cmake\\'" . cmake-mode))
+              auto-mode-alist))
+
+;---APACHE MODE---
+(autoload 'apache-mode "apache-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.htaccess\\'"   . apache-mode))
+(add-to-list 'auto-mode-alist '("httpd\\.conf\\'"  . apache-mode))
+(add-to-list 'auto-mode-alist '("srm\\.conf\\'"    . apache-mode))
+(add-to-list 'auto-mode-alist '("access\\.conf\\'" . apache-mode))
+(add-to-list 'auto-mode-alist '("sites-\\(available\\|enabled\\)/" . apache-mode))
+
+(put 'set-goal-column 'disabled nil)
+
+;---XML expansion/compression---
+(require 'hideshow)
+(require 'sgml-mode)
+(require 'nxml-mode)
+(add-to-list 'hs-special-modes-alist
+             '(nxml-mode
+               "<!--\\|<[^/>]*[^/]>"
+               "-->\\|</[^/>]*[^/]>"
+
+               "<!--"
+               sgml-skip-tag-forward
+               nil))
+(add-hook 'nxml-mode-hook 'hs-minor-mode)
+;; optional key bindings, easier than hs defaults
+(define-key nxml-mode-map (kbd "C-c h") 'hs-toggle-hiding)

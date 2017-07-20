@@ -1,0 +1,10 @@
+# .login.user 
+#
+# User customized .login information
+
+# xrdb -merge .Xdefaults
+
+#---Add user customization below here---
+setenv PAGER less
+setenv EDITOR emacs
+setenv CVSEDITOR emacs
