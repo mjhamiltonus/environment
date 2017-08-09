@@ -1,0 +1,53 @@
+function [out1, out2]=name(varargin)
+% NAME one_line_description 
+% 
+% Calling Sequence: 
+%   [out1,out2] = name( in1, in2 [, OPTIONAL] )
+%
+% INPUTS 
+%   in1   description (units)
+%   in2   description (units)
+%
+% OUTPUTS 
+%   out1  description (units)
+%   out2  description (units)
+%
+% DESCRIPTION
+% 
+% More detailed description here.  References can go at the end
+% here.
+%
+% OPTIONAL PARAMETERS
+%   'vararg1', #    optional arg description [default value]
+%   'exampleArg', #  example of optional arguement [256]   
+%
+% OPTIONAL SWITCHES 
+%   'noplot'        Do not generate the plot
+%
+% Copyright (c) 2016 Leidos
+% Author: Mike Hamilton
+% 2016-09-20
+
+
+%%-----INPUT PARSING ROUTINE-----
+if( nargin < 2 ), error('No input params specified.  Use Help'); end
+in1 = varargin{1};
+in2 = varargin{2};
+% fill in defaults
+exampleArg = 256;
+doplot     = 0;
+
+ii     = 3;
+while( ii<=nargin )
+   keyword = lower( varargin{ii} );
+   switch keyword
+   case 'examplearg'
+      exampleArg = varargin{ii+1}; ii = ii+2;
+   case 'doplot'
+      doplot = 1; ii=ii+1;
+   otherwise
+      error( ['Argument "', varargin{ii}, '" not recognized. Use help.' ] );
+   end
+end
+%%-----END INPUT PARSING ROUTINE-----
+

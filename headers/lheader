@@ -1,0 +1,21 @@
+
+\documentclass[12pt]{article}
+\usepackage{palatino,url}
+\usepackage{amssymb,amsmath}
+
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.25in}
+
+\begin{document}
+
+\title{Title Here}
+\author{Michael Hamilton}
+\maketitle
+
+\section*{SECTION HERE}
+
+
+\end{document}

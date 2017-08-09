@@ -1,0 +1,108 @@
+function [out1, out2]=name(varargin)
+% NAME one_line_description 
+% 
+% Calling Sequence: 
+%   [out1,out2] = name( in1, in2 [, OPTIONAL] )
+%
+% INPUTS 
+%   in1   description (units)
+%   in2   description (units)
+%
+% OUTPUTS 
+%   out1  description (units)
+%   out2  description (units)
+%
+% DESCRIPTION
+% 
+% More detailed description here.  References can go at the end
+% here.
+%
+% OPTIONAL PARAMETERS
+%   'vararg1', #    optional arg description [default value]
+%   'exampleArg', #  example of optional arguement [256]   
+%
+% OPTIONAL SWITCHES 
+%   'noplot'        Do not generate the plot
+%
+% Copyright (c) 2016 Leidos
+% Author: Mike Hamilton
+% 2016-09-20
+
+
+
+classdef (Abstract) Example < handle
+% PRODUCTIONMODEL Abstrace base class for embedded design
+%
+%  ProductionModel is an abstract base class which serves as a
+%  baseline construct for embedded software component objects.
+%
+
+    properties (Abstract)
+        % @TODO: Insert state variable explicitly?  
+    end
+    
+    methods (Abstract)
+        
+        configure(this, configuration)
+        % Configures the model with initialization parameters.  These are
+        % startup configuration messages generally applied one time
+        % only at instantiation.
+        %
+        % Parameters:
+        % this           Self (matlabese for OO programming)
+        % configuration  Flat structure of configuration information
+        % 
+        
+        
+        control(this, controlData)
+        % Applies command and control data to the model.  Similar to configure
+        % call, but, these may be applied after the service has
+        % already been running and may force some reconfiguration.
+        %
+        % Parameters:
+        % this           Self (matlabese for OO programming)
+        % controlData    Apply a run-time variable configuration(control) 
+        
+
+
+        initialize(this)
+        % Initialize the component.  After configuration and control
+        % the initialization method allows the model to
+        % perform initial resource allocation and one-time
+        % calculations.
+        %
+        % Parameters:
+        % this           Self (matlabese for OO programming)
+        
+
+        
+        process(this, dataIn, dataInOut, dataOut)
+        % Performs processing.
+        % The process method performs the main processing work of the model.
+        % It will not be called until after initialize().
+        %
+        % this          Self (matlabese for OO programming)
+        % dataIn        structure with input data arguments
+        % dataInOut     bi-directional data arguments (use sparingly or never!)
+        % dataOut       Output data arguments
+        
+
+        
+        cleanup(this)
+        % Model clean-up.
+        % At completion of processing, this method will be called to deallocate
+        % resources and to complete any computations or perform final output.
+        % After cleanup, the model must be in a state where configure or initialize
+        % can be called again.
+        %
+        % this           Self (matlabese for OO programming)
+        
+    end
+    
+    methods
+        function productionModel = ProductionModel()
+        % Default Constructor.
+        end
+    end
+end
+

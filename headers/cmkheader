@@ -1,0 +1,30 @@
+#--------------------------------------------------------
+# The CMakeLists.txt for:                     ProgramName
+# Author(s):                             Michael Hamilton
+# Date:                                        2016-09-20
+# Other notes here
+#--------------------------------------------------------
+
+
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/cpp/)
+INCLUDE_DIRECTORIES(${NURC_LOCAL_SRC_DIR_ABSOLUTE}/slita/src/cpp/)
+
+# optional - use SRC in the below if all
+FILE(GLOB SRC *.cpp)
+
+# Static libe build directive
+ADD_LIBRARY(myLib STATIC source1.cpp source2.cpp)
+# Shared lib build directive
+ADD_LIBRARY(myLibShared SHARED source1.cpp source2.cpp)
+
+# If you want to build shared and static, you need these lines
+SET_TARGET_PROPERTIES(CAINPro-shared PROPERTIES OUTPUT_NAME "CAINPro")
+SET_TARGET_PROPERTIES(CAINPro PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+SET_TARGET_PROPERTIES(CAINPro-shared PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+
+# SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG -DTIMING")
+
+TARGET_LINK_LIBRARIES(myLib
+   fftw3
+   m)
+

@@ -1,0 +1,32 @@
+/**
+ * @file
+ * @brief IO interface for SLITA files
+ * @author M. Hamilton
+ * @author NURC
+ * @version 0.1-2016-09-20
+ */ 
+
+using namespace std;
+
+/**
+ * This class does ....
+ */
+class SlitaFile 
+{
+};
+
+/**
+ * Constructor for ThisClass
+ * 
+ * @param[in] myParamName this parameter ...
+ */
+ThisClass::ThisClass()
+{
+}
+
+
+main ()
+{
+   return 0;
+}
+

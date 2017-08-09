@@ -1,0 +1,77 @@
+function [x1, x2]=name(varargin)
+% name description 
+% [x1,x2] = fftplot( args )
+%
+% DESCRIPTION
+%
+% PARAMETERS
+%   'fftl', #       FFT length [256]
+%   'fs', #         Sampling frequency [1=>normalize freq. axis]
+%   'window', [#]   Array of window func coeffcients to mult original
+%                     signal before fft [none==rectangular]
+% SWITCHES 
+%   'noplot'        Do not generate the plot
+%
+% Mike Hamilton
+% NURC
+% 2016-09-20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[DD,xx,xhat] = parseInput(nargin,varargin);
+
+
+%***** PARSE THE INPUT ************************************************
+function [DD,xx,xhat] = parseInput(nargin,varg)
+
+if( nargin < 2 ), error('No input params specified.  Use Help'); end
+DD  = varg{1};
+xx  = varg{2};
+xhat= varg{3};
+ii     = 4;
+while( ii<=nargin )
+  keyword = lower( varg{ii} );
+  switch keyword
+   case 'c'
+    cc = varg{ii+1}; ii=ii+2;
+   case 'du'
+    du = varg{ii+1}; ii=ii+2;
+   case 'motion'
+    motioninfo = varg{ii+1}; ii=ii+2;
+   case 'rmax'
+    rmax = varg{ii+1}; ii=ii+2;
+   case 'rmin'
+    rmin = varg{ii+1}; ii=ii+2;
+   case 'track'
+    track = varg{ii+1}; ii=ii+2;
+   case 'verbose'
+    verbose = 1; ii=ii+1;
+   case 'window'
+    window = 1; ii=ii+1;
+   otherwise
+    error( ['Argument "', varg{ii}, '" not recognized. Use help.' ] );
+  end
+end     
+

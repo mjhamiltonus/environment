@@ -1,0 +1,35 @@
+
+\documentclass[pdf]{prosper}
+\usepackage{amssymb,amsmath}
+\title{Constant Q}
+\author{Michael Hamilton}
+
+\begin{document}
+\maketitle
+
+%---- An example Overlay Slide and item list----
+\overlays{3}{
+\begin{slide}{Title of the slide}
+
+  \begin{itemize}
+  \item{This text is visible throughout}
+    \untilSlide{2}{\item This text appears until slide two.}
+    \fromSlide{2}{\item This text appears from slide two.}
+    \onlySlide{3}{\item This text only appears on slide three.}
+  \end{itemize}
+
+\end{slide}}
+
+
+%---- An example Multimedia Slide ----
+\begin{slide}{Middle}
+
+\Huge{I want to have multimedia!}
+\normalsize 
+
+\href{run:clicking.wav}{Start the clicking}
+
+\end{slide}
+
+
+\end{document}

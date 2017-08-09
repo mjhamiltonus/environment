@@ -1,0 +1,51 @@
+function [out1, out2, ...] = tmp(in1,in2,...)
+% TMP first line is short help used for various help functions
+%     such as "lookfor" and "help directory"
+%
+% More description if required... - just one line above is best
+% Keep it short. Let input/output descriptions and examples suffice
+%
+% Usage: [out1,out2,...] = tmp(in1,in2,...)
+%
+% Input:
+%   in1 - description1
+%   in2 - description2
+%
+% Output:
+%   out1 - description1
+%   out2 - description2
+%
+% Restrictions:
+%  1.
+%  2.
+%
+% Notes:
+%  1.
+%  2.
+%
+% References:
+%  1.
+%  2.
+%
+% Examples:
+%  1. [out11,out21,...] = tmp(in11,in21,...)
+%     shows how to...
+%  2. [out11,out21,...] = tmp(in11,in21,...)
+%     shows how to...
+%
+%
+%
+%
+%
+% Copyright (c) 2001 SAIC
+% Author: khr
+% 10/01/01
+% RCS History:
+% $Log$
+% End RCS History:
+% ruler –-1234567890123456789012345678901234567890123456789012345678901234567890
+
+return
+
+% SUBFUNCTION --------------------------------------------------
+% function another()
