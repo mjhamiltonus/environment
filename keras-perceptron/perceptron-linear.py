@@ -21,6 +21,9 @@ y_train = np_utils.to_categorical(y_train)
 y_test = np_utils.to_categorical(y_test)
 labels = range(10)
 
+# 2-d array: mostly 0, with a 1 in the column represented.  Big training
+print("ytrain shape: {:}".format(y_train))
+
 num_classes = y_train.shape[1]
 
 # create model
