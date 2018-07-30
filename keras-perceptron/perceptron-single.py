@@ -13,17 +13,19 @@ config = run.config
 # load data
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
+# MJH: Change to a binary classification problem - 2 class classifier this simple example.
 is_five_train = y_train == 5
 is_five_test = y_test == 5
 labels = ["Not Five", "Is Five"]
 
+# Lucky all the data is the same!
 img_width = X_train.shape[1]
 img_height = X_train.shape[2]
 
 # create model
 model=Sequential()
-model.add(Flatten(input_shape=(img_width,img_height)))
-model.add(Dense(1, activation="sigmoid"))
+model.add(Flatten(input_shape=(img_width,img_height)))  # need to specify input size! flatten makes it a line
+model.add(Dense(1, activation="sigmoid"))  
 model.compile(loss='binary_crossentropy', optimizer='adam',
                 metrics=['accuracy'])
 
