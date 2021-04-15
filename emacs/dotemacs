@@ -1,5 +1,5 @@
 ;---Add path for major mode code---
-(setq load-path (append load-path '("~hamiltonmj/emacs")))
+(setq load-path (append load-path '("~michael.hamilton/emacs")))
 
 ;---Font setting---
 (set-face-attribute 'default nil :height 150)
@@ -97,18 +97,6 @@
       (cons '("python" . python-mode)
             interpreter-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
-
-;---BZR INTERFACE: VCS---
-(unless (memq 'Bzr vc-handled-backends)
-  (add-to-list 'vc-handled-backends 'Bzr))
-;---BZR INTERFACE---
-;; (require 'bazaar)
-;; (add-hook 'find-file-hooks 'bzr-maybe-activate)
-
-;---SVN INTERFACE---
-(require 'psvn)
-(autoload 'svn-status "dsvn" "Run `svn status'." t)
-(autoload 'svn-update "dsvn" "Run `svn update'." t)
 
 ;---GIT INTERFACE---
 (require 'git)
