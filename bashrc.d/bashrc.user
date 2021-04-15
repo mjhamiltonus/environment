@@ -21,9 +21,6 @@ HISTCONTROL=ignoreboth
 export PATH=${PATH}:~${USER}/bin:.
 export EDITOR=emacs
 
-# Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
-# If this is an xterm set the title to user@host:dir
-
 # MJH: slim down the command line prompt.  Path in top bar.
 PS1='${debian_chroot:+($debian_chroot)}\u@\h\$ '
 case "$TERM" in

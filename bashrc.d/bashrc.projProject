@@ -1,7 +1,0 @@
-# FILE:        .bashrc.projProject
-#              PROJECT development tree - TEMPLATE repository 
-
-#--- PROJECT NAME ----------------------------------------------
-# export PROJECT_HOME=~/projects/templaterepo_gtest
-# export SNA_HOME=~/projects/snatemplate
-# export DATA=~/projects/svams/testdata

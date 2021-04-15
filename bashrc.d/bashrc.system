@@ -6,29 +6,5 @@
 #              Users should add information in the .cshrc.user file,
 #              which is sourced by the .cshrc.system file.
 
-#--- Set Libary and Man pages ---
-#-- Trying defaults
-# set LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
-
 umask 002
-
-#--- MATLAB ------------------------------------------------
-# This little bit removes all other MATLAB paths, but, leaves extra : and spaces - bad
-# export PATH=`echo ${PATH} | awk -v RS=: -v ORS=: '/MATLAB/ {next} {print}'`
-# export MATLAB_HOME=/opt/MATLAB/R2015b
-# export MATLAB_HOME=/opt/MATLAB/R2014a
-# export MATLAB_ROOT=/opt/MATLAB/R2014a
-# export MATLAB_ETC=${MATLAB_HOME}/etc
-# export MATLAB_SHELL=/bin/bash
-# export MLM_LICENSE_FILE=${MATLAB_HOME}/licenses/network.lic
-
-# export PATH=${PATH}:${MATLAB_HOME}/bin:${MATLAB_ETC}
-# this hoses up all other compilations for some reason...
-# export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${MATLAB}/bin/glnxa64:${MATLAB}/sys/os/glnxa64
-
-#--- JAVA ---------------------------------------------------
-export JAVA_HOME=/opt/java/jre1.8.0_71
-
-# added by Miniconda3 4.3.21 installer
-export PATH="/home/hamiltonmj/local/miniconda3/bin:$PATH"
 

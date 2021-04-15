@@ -7,4 +7,3 @@
 #---Add user customization below here---
 setenv PAGER less
 setenv EDITOR emacs
-setenv CVSEDITOR emacs
