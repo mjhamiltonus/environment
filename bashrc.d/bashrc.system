@@ -8,3 +8,4 @@
 
 umask 002
 
+export PATH=$PATH:/opt/clion/bin
