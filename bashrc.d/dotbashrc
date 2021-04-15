@@ -4,9 +4,8 @@
 # Users should add information in the .cshrc.user file, which is 
 # sourced by the .cshrc.system file.
 
-. ~hamiltonmj/bashrc.d/bashrc.system
-. ~hamiltonmj/bashrc.d/bashrc.user
-. ~hamiltonmj/bashrc.d/bashrc.projProject
-. ~hamiltonmj/bashrc.d/bashrc.aliases
+. ~michael.hamilton/bashrc.d/bashrc.system
+. ~michael.hamilton/bashrc.d/bashrc.user
+. ~michael.hamilton/bashrc.d/bashrc.aliases
 
 
