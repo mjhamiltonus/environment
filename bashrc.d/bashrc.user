@@ -21,6 +21,13 @@ HISTCONTROL=ignoreboth
 export PATH=${PATH}:~${USER}/bin:.
 export EDITOR=emacs
 
+
+#---Add git global config stuff---
+git config --global user.name "Michael Hamilton"
+git config --global user.email micheal.hamilton@getcruise.com
+git config --global core.autocrlf input
+export GIT_LFS_SKIP_SMUDGE=1
+
 # MJH: slim down the command line prompt.  Path in top bar.
 PS1='${debian_chroot:+($debian_chroot)}\u@\h\$ '
 case "$TERM" in
